@@ -1,0 +1,153 @@
+# android-test-2.0
+
+## Exercise I - Menu Code Kata
+
+**Overview**
+The Menu Code Kata exercise involves designing a simple implementation of a Menu feature based on
+specific requirements. The exercise focuses on creating a Menu model with various behaviors related
+to selecting, unselecting, and accessing recipes, as well as modifying behavior based on
+subscription type.
+
+**Classes and Components**
+
+1. Recipe
+   Represents a recipe with an id, title, and list of tags.
+   Immutable data structure.
+   Equality is based on the recipe's id.
+
+2. Subscription
+   Represents a subscription with an id, delivery day, and a boolean indicating if it's for a
+   family.
+   Immutable data structure.
+
+3. Menu
+   Represents a menu containing a list of recipes available for selection and a reference to an
+   associated subscription.
+   Provides methods for selecting, unselecting, and accessing recipes based on specific criteria.
+   Implements restrictions on the number of recipes that can be selected based on the subscription
+   type.
+
+4. MenuViewModel
+   View model responsible for managing the interaction between the UI and the Menu model.
+   Exposes methods for selecting, unselecting, and accessing recipes.
+   Updates the UI state based on changes in the Menu model.
+
+**Testing**
+
+*Unit Tests*
+
+- Ensure each method in the Menu class is tested individually.
+- Test various scenarios, including selecting single/multiple recipes, unselecting single/multiple
+  recipes, accessing selected recipes, and modifying behavior based on subscription type.
+- Use test-driven development (TDD) approach to write tests before implementing each method.
+
+*Integration Tests*
+Test the integration between MenuViewModel and Menu model.
+Verify that the UI state is updated correctly based on changes in the Menu model.
+Mock dependencies such as getMenuUseCase to simulate different scenarios and edge cases.
+
+*Testing Steps*
+
+*Unit Tests:*
+
+- Navigate to the test directory and locate the test classes for Menu and MenuViewModel.
+- Run individual test methods for each behavior to ensure correctness.
+
+*Integration Tests:*
+
+- Used mock frameworks like MockK to simulate dependencies and interactions.
+- Verify that the UI state is updated correctly based on changes in the Menu model.
+
+*Edge Cases:*
+
+- Test scenarios such as selecting more than the allowed number of recipes and modifying behavior
+  based on subscription type.
+- Ensure error handling is tested for scenarios where fetching menu data fails.
+
+Conclusion
+The Menu Code Kata exercise focuses on implementing a Menu feature with specific behaviors and
+restrictions. By following SOLID principles and writing comprehensive tests, we ensure the
+correctness and reliability of the implementation. This README provides guidance on understanding
+the various classes, testing steps, and considerations for the exercise.
+
+
+
+## Exercise II - Recipes List View
+
+## Overview
+
+- This is a simple single-page application showcasing recipes.
+- The app fetches recipe data from a remote source and displays it in a list view.
+- It includes basic UI, data loading, and error handling functionalities.
+
+## Implementation Details
+
+**Architecture**
+The app follows the MVVM (Model-View-ViewModel) architecture pattern for separation of concerns and
+better maintainability.
+
+- Model: Represents the data entities and business logic.
+- View: Represents the UI components and layout.
+- ViewModel: Acts as a bridge between the Model and the View.
+
+**Libraries Used**
+
+- Retrofit: For making HTTP requests and fetching recipe data from the remote source.
+- Hilt: For dependency injection to manage app-level dependencies.
+- Kotlin Coroutines: For asynchronous programming and handling of background tasks.
+- Material Components: For basic UI components and styling.
+- Accompanist Coil: For image loading and displaying recipe images.
+- Accompanist Snackbar: For displaying error messages in a Snackbar.
+
+**Components**
+
+- Recipe: Data class representing a recipe entity, including attributes such as name, image,
+  headline, etc.
+- RecipeRepository: Repository class responsible for fetching recipe data from the remote data
+  source.
+- RemoteDataSource: Class handling the network calls and data fetching operations using Retrofit.
+- GetRecipesUseCase: Use case class responsible for fetching recipes from the repository and
+  providing them to the ViewModel.
+- RecipeViewModel: ViewModel class responsible for providing data to the UI and handling UI-related
+  logic.
+- RecipeActivity: Activity class serving as the entry point of the app and hosting the
+  RecipeFragment.
+- RecipeFragment: Fragment class responsible for displaying the list of recipes and handling UI
+  interactions.
+- RecipeItem: Composable function for displaying individual recipe items in the list view.
+
+**UI**
+
+- The app shows a single view consisting of a list of recipes.
+- At launch, a loading spinner is displayed while fetching data from the source.
+- Once the data is fetched, the loading spinner is hidden, and the recipes' view is displayed.
+- The current date is shown in "dd MMM" format as the first element of the recipes list view.
+- Recipes in the list are presented as cards with image, name, and headline. The recipe name is
+  displayed in bold with a text size of 16sp.
+- In case of an error, a Snackbar with a short description of the issue is displayed at the bottom
+  of the screen.
+
+**Testing Strategies**
+
+- Manually verify the app behavior by launching the app on different devices/emulators, checking UI
+  layout,
+  loading spinner functionality, displaying recipe data, and error handling.
+
+**How to Test**
+
+- Clone the repository from GitHub.
+- Open the project in Android Studio or your preferred IDE.
+- Run the app on an emulator or physical device.
+- Verify the loading spinner is displayed initially.
+- Once the data is fetched, verify the recipes' view is displayed with the current date at the top.
+- Ensure individual recipe items are displayed correctly with image, name, and headline.
+- Trigger an error (e.g., by disconnecting the network) and verify that a Snackbar with the error
+  message is displayed at the bottom of the screen.
+
+**Conclusion**
+
+- This README provides an overview of the Recipe App, including implementation details,
+  architecture, libraries used, UI components,
+  testing strategies, and instructions on how to test the app. By following these guidelines, you
+  can ensure proper functionality and reliability of the app.
+
